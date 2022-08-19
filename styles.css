@@ -55,7 +55,8 @@ body{
     border-radius: 10px;
     background-color: var(--bg-color);
     padding: 9px 8px;
-    display: flex;
+    display: grid;
+    grid-template-columns: auto auto;
     margin-bottom: 17px;
 }
 .choice-div > button img{
@@ -66,21 +67,16 @@ body{
     padding: 11px 50px;
     border: none;
     outline: none;
+    background-color: transparent;
 }
 .choice-div > button:hover{
     cursor: pointer;
-}
-.o-mark-btn{
-    background-color: transparent;
 }
 .is-not-first{
     background-color: var(--silver) !important;
 }
 .choice-div > button:not(.is-not-first):hover{
     background: rgba(168, 191, 201, 0.05);
-}
-.x-mark-btn{
-    background-color: transparent;
 }
 .remember-text{
     font-weight: 500;
@@ -123,4 +119,21 @@ body{
 .vs-player-btn:hover{
     background-color: #65E9E4;
     cursor:pointer;
+}
+
+@media(min-width:600px){
+    .container{
+        width: 460px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .chose-ur-mark{
+        width: 100%;
+    }
+    .choice-div{
+        width: 412px;
+    }
+    .new-game-btns{
+        width: 100%;
+    }
 }
