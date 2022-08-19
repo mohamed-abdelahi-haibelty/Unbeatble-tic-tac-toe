@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic tac toe</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700&family=Open+Sans:wght@400;700&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
@@ -18,17 +21,17 @@
                 <h1>Pick player 1's mark</h1>
                 <div class="choice-div">
                     <button class="x-mark-btn">
-                        <img src="assets/icon-x.svg" alt="">
+                        <img src="assets/icon-x-silver.svg" alt="">
                     </button>
-                    <button class="o-mark-btn">
-                        <img src="assets/icon-o.svg" alt="">
+                    <button class="o-mark-btn is-not-first">
+                        <img src="assets/icon-o-dark.svg" alt="">
                     </button>
                 </div>
                 <span class="remember-text">Remember: X goes first</span>
             </div>
-            <div class="new-gane-btns">
-                <button class="vs-cpu-btn"><a href="#">New Game (vs CPU)</a></button>
-                <button class="vs-player-btn"><a href="#">New Game (vs player)</a></button>
+            <div class="new-game-btns">
+                <button class="vs-cpu-btn btn"><a href="#">New Game (vs CPU)</a></button>
+                <button class="vs-player-btn btn"><a href="#">New Game (vs player)</a></button>
             </div>
         </div>
     </div>
