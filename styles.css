@@ -1,0 +1,126 @@
+:root{
+    --bg-color:#1A2A33;
+    --semi-dark-navy:#1F3641;
+    --silver:#A8BFC9;
+    --light-blue:#31C3BD;
+    --light-yellow:#F2B137;
+    --light-yellow-hover:#FFC860;
+    --light-blue-hover:#65E9E4;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+body{
+    background-color: var(--bg-color) !important;
+    font-family: 'Outfit', sans-serif;
+}
+
+.container{
+    width:90%;
+    margin:24px;
+}
+.new-game{
+    margin-top:calc(119px - 24px);
+}
+.new-game-header{
+    width:72px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 32px;
+}
+.new-game-header img{
+    width:32px;
+}
+.chose-ur-mark{
+    width: 327px;
+    border-radius: 15px;
+    background-color: var(--semi-dark-navy);
+    padding: 24px;
+    box-shadow: inset 0px -8px 0px #10212A;
+    margin-bottom: 32px;
+}
+.chose-ur-mark h1{
+    font-weight: 700;
+    color: var(--silver);
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 24px;
+}
+.choice-div{
+    width: 279px;
+    border-radius: 10px;
+    background-color: var(--bg-color);
+    padding: 9px 8px;
+    display: flex;
+    margin-bottom: 17px;
+}
+.choice-div > button img{
+    width:32px;
+}
+.choice-div > button{
+    border-radius: 10px;
+    padding: 11px 50px;
+    border: none;
+    outline: none;
+}
+.choice-div > button:hover{
+    cursor: pointer;
+}
+.o-mark-btn{
+    background-color: transparent;
+}
+.is-not-first{
+    background-color: var(--silver) !important;
+}
+.choice-div > button:not(.is-not-first):hover{
+    background: rgba(168, 191, 201, 0.05);
+}
+.x-mark-btn{
+    background-color: transparent;
+}
+.remember-text{
+    font-weight: 500;
+    font-size: 14px;
+    text-align: center;
+    letter-spacing: 0.875px;
+    color: var(--silver);
+    opacity: 0.5;
+    display: block;
+}
+.new-game-btns{
+    width: 327px;
+}
+.new-game-btns .btn{
+    border-radius: 15px;
+    outline: none;
+    border: none;
+    width: 100%;
+    padding: 14px 76px 22px 78px;
+    margin-bottom: 16px;
+}
+.new-game-btns .btn a{
+    color: var(--bg-color);
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+}
+.vs-cpu-btn{
+    background: #F2B137;
+    box-shadow: inset 0px -8px 0px #cc8b13;
+}
+.vs-cpu-btn:hover{
+    background-color: var(--light-yellow-hover);
+    cursor: pointer;
+}
+.vs-player-btn{
+    background: var(--light-blue);
+    box-shadow: inset 0px -8px 0px #118C87;
+}
+.vs-player-btn:hover{
+    background-color: #65E9E4;
+    cursor:pointer;
+}
