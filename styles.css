@@ -239,11 +239,22 @@ body{
 }
 
 @media(min-width:600px){
+    .player-turn{
+        padding: 13px 30px 19px 30px;
+        font-size: 16px;
+        gap: 13px;
+    }
+    .restart-btn{
+        width: 52px;
+        padding: 16px;
+    }
     .game-header{
         margin-bottom: 19px;
+        width: 457px;
     }
     .game-box{
         grid-template-columns: repeat(3, 140px);
+        margin-bottom: 19px;
     }
     .square{
         padding: 38px;
@@ -252,5 +263,12 @@ body{
     }
     .square img{
         width: 64px;
+    }
+    .game-result{
+        width:459px;
+        grid-template-columns: repeat(3,140px);
+    }
+    .result-btn{
+        padding: 13px 48.5px 13px 48.5px;
     }
 }
