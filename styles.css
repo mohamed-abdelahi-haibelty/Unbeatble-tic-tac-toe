@@ -145,6 +145,7 @@ body{
     display: grid;
     grid-template-columns: repeat(3,auto);
     justify-content: space-between;
+    margin-bottom: 64px;
 }
 
 .x-o-icons img{
@@ -181,4 +182,22 @@ body{
 }
 .restart-btn img{
     width: 16px;
+}
+
+/******************game box*************************/
+
+.game-box{
+    display: grid;
+    grid-template-columns: repeat(3, 96px);
+    gap: 20px;
+}
+.square{
+    background: var(--semi-dark-navy);
+    box-shadow: inset 0px -8px 0px #10212A;
+    border-radius: 10px;
+    height: 96px;
+    padding: 24px 28px;
+}
+.square img{
+    width:40px;
 }
