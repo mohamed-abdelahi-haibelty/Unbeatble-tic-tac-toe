@@ -181,6 +181,10 @@ body{
     outline: none;
     width: 40px;
 }
+.restart-btn:hover{
+    background-color: #DBE8ED;
+    cursor: pointer;
+}
 .restart-btn img{
     width: 16px;
 }
@@ -200,6 +204,9 @@ body{
     height: 96px;
     padding: 24px 28px;
 }
+.square:hover{
+    cursor: pointer;
+}
 .square img{
     width:40px;
 }
@@ -217,6 +224,9 @@ body{
     display: flex;
     align-items: center;
     color: var(--bg-color);
+}
+.result-btn:hover{
+    cursor: pointer;
 }
 .result-btn small{
     font-size: 12px;
