@@ -143,6 +143,7 @@ body{
 /**************************GAME STYLES********************/
 .game-header{
     display: grid;
+    width: 327px;
     grid-template-columns: repeat(3,auto);
     justify-content: space-between;
     margin-bottom: 64px;
@@ -190,6 +191,7 @@ body{
     display: grid;
     grid-template-columns: repeat(3, 96px);
     gap: 20px;
+    margin-bottom: 20px;
 }
 .square{
     background: var(--semi-dark-navy);
@@ -200,6 +202,40 @@ body{
 }
 .square img{
     width:40px;
+}
+
+.game-result{
+    display: grid;
+    width: 328px;
+    grid-template-columns: repeat(3,96px);
+    justify-content: space-between;
+}
+.result-btn{
+    border-radius: 10px;
+    padding: 12px 30px;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    color: var(--bg-color);
+}
+.result-btn small{
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.75px;
+}
+.result-btn h4{
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: 1.25px;
+}
+.x-player{
+    background-color: var(--light-blue);
+}
+.ties{
+    background-color: var(--silver);
+}
+.o-player{
+    background-color: var(--light-yellow);
 }
 
 @media(min-width:600px){
