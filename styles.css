@@ -138,3 +138,47 @@ body{
         width: 100%;
     }
 }
+
+
+/**************************GAME STYLES********************/
+.game-header{
+    display: grid;
+    grid-template-columns: repeat(3,auto);
+    justify-content: space-between;
+}
+
+.x-o-icons img{
+    width: 32px;
+}
+.x-o-icons :first-child{
+    margin-right: 6px;
+}
+.player-turn{
+    background: var(--semi-dark-navy);
+    box-shadow: inset 0px -4px 0px #10212A;
+    border-radius: 5px;
+    border:none;
+    outline: none;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--silver);
+    padding: 9px 15px 13px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+}
+.player-turn img{
+    width: 16px;
+}
+.restart-btn{
+    background: var(--silver);
+    box-shadow: inset 0px -4px 0px #6B8997;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    width: 40px;
+}
+.restart-btn img{
+    width: 16px;
+}
