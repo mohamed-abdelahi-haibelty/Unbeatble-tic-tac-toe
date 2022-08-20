@@ -74,6 +74,7 @@ body{
 }
 .is-not-first{
     background-color: var(--silver) !important;
+    transition: 2s ease;
 }
 .choice-div > button:not(.is-not-first):hover{
     background: rgba(168, 191, 201, 0.05);
