@@ -201,3 +201,20 @@ body{
 .square img{
     width:40px;
 }
+
+@media(min-width:600px){
+    .game-header{
+        margin-bottom: 19px;
+    }
+    .game-box{
+        grid-template-columns: repeat(3, 140px);
+    }
+    .square{
+        padding: 38px;
+        height: 140px;
+        border-radius: 15px;
+    }
+    .square img{
+        width: 64px;
+    }
+}
