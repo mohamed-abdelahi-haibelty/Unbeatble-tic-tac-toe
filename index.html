@@ -23,17 +23,63 @@
                     <button class="x-mark-btn pick-mark">
                         <img src="assets/icon-x-silver.svg " id="x-mark" alt="">
                     </button>
-                    <button class="o-mark-btn is-not-first pick-mark">
+                    <button class="o-mark-btn is-first pick-mark">
                         <img src="assets/icon-o-dark.svg" id="o-mark" alt="">
                     </button>
                 </div>
-                <span class="remember-text">Remember: X goes first</span>
+                <span class="remember-text">Remember: O goes first</span>
             </div>
             <div class="new-game-btns">
                 <button class="vs-cpu-btn btn"><a href="#">New Game (vs CPU)</a></button>
                 <button class="vs-player-btn btn"><a href="#">New Game (vs player)</a></button>
             </div>
         </div>
+        <!---------------------- game  --------------------------->
+        <div class="game">
+            <div class="game-header">
+                <div class="x-o-icons">
+                    <img src="assets/icon-x.svg" alt="">
+                    <img src="assets/icon-o.svg" alt="">
+                </div>
+                <button class="player-turn">
+                    <img src="assets/icon-o-silver.svg" alt="">
+                    TURN
+                </button>
+                <button class="restart-btn">
+                    <img src="assets/icon-restart.svg" alt="">
+                </button>
+            </div>
+            <div class="game-box">
+                <div class="square" id="0">
+                    <img src="assets/icon-x.svg" alt="">
+                </div>
+                <div class="square" id="1">
+                    <img src="assets/icon-o.svg" alt="">
+                </div>
+                <div class="square" id="2"></div>
+                <div class="square" id="3"></div>
+                <div class="square" id="4"></div>
+                <div class="square" id="5"></div>
+                <div class="square" id="6"></div>
+                <div class="square" id="7"></div>
+                <div class="square" id="8"></div>
+            </div>
+            <div class="game-result">
+                <div class="result-btn x-player">
+                    <small>X(P2)</small>
+                    <h4>14</h4>
+                </div>
+                <div class="result-btn ties">
+                    <small>TIES</small>
+                    <h4>32</h4>
+                </div>
+                <div class="result-btn o-player">
+                    <small>O(P1)</small>
+                    <h4>11</h4>
+                </div>
+            </div>
+        </div>
+
     </div>
     <script src="index.js"></script>
 </body>
