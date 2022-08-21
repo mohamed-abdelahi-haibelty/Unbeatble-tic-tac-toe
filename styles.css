@@ -72,11 +72,11 @@ body{
 .choice-div > button:hover{
     cursor: pointer;
 }
-.is-not-first{
+.is-first{
     background-color: var(--silver) !important;
     transition: 2s ease;
 }
-.choice-div > button:not(.is-not-first):hover{
+.choice-div > button:not(.is-first):hover{
     background: rgba(168, 191, 201, 0.05);
 }
 .remember-text{
@@ -141,6 +141,10 @@ body{
 
 
 /**************************GAME STYLES********************/
+
+.game{
+    display: none;
+}
 .game-header{
     display: grid;
     width: 327px;
