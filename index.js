@@ -1,5 +1,4 @@
 const pickmark = document.querySelectorAll(".pick-mark");
-const rememberText = document.querySelector(".remember-text");
 let imgs = {
     silverX:'<img src="assets/icon-x-silver.svg ">',
     silevrO:'<img src="assets/icon-o-silver.svg">',
@@ -11,6 +10,7 @@ let turn = "x";
 /*******************************pick player 1's mark************************************/
 
 pickmark.forEach(btn => {
+    const rememberText = document.querySelector(".remember-text");
     btn.addEventListener("click",()=>{
         if(btn.classList.contains("o-mark-btn")){
             btn.innerHTML = imgs.silevrO;
@@ -29,3 +29,12 @@ pickmark.forEach(btn => {
         }
     })
 });
+playerTurn();
+
+function playerTurn(){
+    const xo = document.querySelector(".player-turn");
+    if(turn === "o")
+        xo.firstElementChild.setAttribute("src","assets/icon-o-silver.svg");
+    else
+        xo.firstElementChild.setAttribute("src","assets/icon-x-silver.svg");
+}
