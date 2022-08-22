@@ -214,6 +214,14 @@ body{
 .square img{
     width:40px;
 }
+.o-win-class{
+    background-color: var(--light-yellow);
+    box-shadow: inset 0px -8px 0px #cc8b13;
+}
+.x-win-class{
+    background-color: var(--light-blue);
+    box-shadow: inset 0px -8px 0px #118C87;
+}
 
 .game-result{
     display: grid;
