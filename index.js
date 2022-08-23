@@ -1,8 +1,8 @@
 ////////////////////DECLARITIONS///////////////////////////////////
-
 const pickmark = document.querySelectorAll(".pick-mark");
 const squares = document.querySelectorAll(".square");
 const vsPlayerbtn = document.querySelector(".vs-player-btn");
+const playerWin = document.querySelector(".player-win");
 const xo = document.querySelector(".player-turn");
 let value;
 let squarePosition = [0,0,0,0,0,0,0,0,0];
@@ -42,10 +42,11 @@ squares.forEach((square, index)=>{
 });
 
 squares.forEach((sequare, index)=>{
-    sequare.addEventListener("click",()=>{
+    sequare.addEventListener("click",function handler(){
         playerTurn(sequare);
         squarePosition[index] = value;
-        turn === "o"? squareWinStyle(1, "x-win-class", imgs.darkX) : squareWinStyle(-1, "o-win-class", imgs.darkO);
+        turn === "o"? squareWinStyle(1, "x-win-class", imgs.darkX, "You Won!", imgs.blueX, "#31C3BD") 
+        : squareWinStyle(-1, "o-win-class", imgs.darkO, "OH NO, YOU LOST...!", imgs.yellowO, "#F2B137");
     },{once:true})
 });
 
@@ -111,11 +112,33 @@ function checkWin(num){
     });
 }
 
-function squareWinStyle(num, winClass, bgImg){
+function squareWinStyle(num, winClass, bgImg, text, winImg, textColor){
     if(checkWin(num) !== undefined){
         for(let i = 0 ;i<3; i++){
             squares[checkWin(num)[i]].classList.add(winClass);
             squares[checkWin(num)[i]].innerHTML = bgImg;
         }
+        endGame(text, winImg, textColor);
+    }else{
+        let tied = true;
+        for(let i = 0; i<9; i++){
+            if(squarePosition[i] === 0){
+                tied = false;
+            }
+        }
+        if(tied)
+          playerWin.style.display = "block";
+          playerWin.children[0].style.display = "none";
+          playerWin.children[1].style.display = "none";
+          playerWin.children[2].style.display = "block";
     }
 }
+
+function endGame(text, winImg, textColor){
+    const takesRound = document.getElementById("takes-round");
+    playerWin.style.display = "block";
+    playerWin.firstElementChild.innerHTML = text;
+    takesRound.insertAdjacentHTML("beforebegin", winImg);
+    takesRound.style.color = textColor;
+}
+console.log(playerWin.children[2]);
