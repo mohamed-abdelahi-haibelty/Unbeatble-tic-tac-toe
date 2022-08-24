@@ -260,6 +260,80 @@ body{
     background-color: var(--light-yellow);
 }
 
+/*************************player win *********************************/
+
+.player-win{
+    width: 375px;
+    background: var(--semi-dark-navy);
+    position: absolute;
+    top: 220px;
+    left: 0;
+    padding: 40px 47px 48px 49px;
+    display: none;
+}
+.player-win h4{
+    font-weight: 700;
+    color: var(--silver);
+    font-size: 14px;
+    letter-spacing: 0.875px;
+    margin-bottom: 16px;
+    text-align: center;
+}
+.win-text{
+    display: flex;
+    gap: 9px;
+    margin-bottom: 24px;
+}
+.win-text img{
+    width:28px;
+}
+.win-text h1{
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 30px;
+    letter-spacing: 1.5px;
+    color: var(--light-blue);
+}
+.tied{
+    text-align: center;
+    margin-bottom: 24px;
+    font-weight: 700;
+    font-size: 24px;
+    letter-spacing: 1.5px;
+    color: var(--silver);
+    margin-top: 34px;
+    display: none;
+}
+.next-step-btns{
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+.quit{
+    background: var(--silver);
+    box-shadow: inset 0px -4px 0px #6B8997;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    padding: 15px 17px;
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: var(--bg-color);
+}
+.next-round{
+    background: var(--light-yellow);
+    box-shadow: inset 0px -4px 0px #CC8B13;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    padding: 15px 16px 17px 17px;
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: var(--bg-color);
+}
+
 @media(min-width:600px){
     .player-turn{
         padding: 13px 30px 19px 30px;
@@ -292,5 +366,24 @@ body{
     }
     .result-btn{
         padding: 13px 48.5px 13px 48.5px;
+    }
+    .player-win{
+        width: 100%;
+    }
+    .win-text{
+        justify-content: center;
+        gap: 24px;
+        align-items: center;
+    }
+    .player-win h4{
+        font-size: 16px;
+        letter-spacing: 1px;
+    }
+    .win-text h1{
+        font-size: 40px;
+        letter-spacing: 2.5px;
+    }
+    .win-text img{
+        width:64px;
     }
 }
