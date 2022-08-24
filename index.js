@@ -22,6 +22,7 @@ let winningCombination = [
                             [3,4,5],[6,7,8],[1,4,7],
                             [2,5,8],[2,4,6]
                          ];
+const counter = [0,0,0];//x,tied,o
 ///////////////////// ADD EVENT LISTENER ////////////////////////////
 
 pickmark.forEach(btn => {
@@ -119,6 +120,7 @@ function squareWinStyle(num, winClass, bgImg, text, winImg, textColor){
             squares[checkWin(num)[i]].innerHTML = bgImg;
         }
         endGame(text, winImg, textColor);
+        gameResult(num);
     }else{
         let tied = true;
         for(let i = 0; i<9; i++){
@@ -126,11 +128,15 @@ function squareWinStyle(num, winClass, bgImg, text, winImg, textColor){
                 tied = false;
             }
         }
-        if(tied)
-          playerWin.style.display = "block";
-          playerWin.children[0].style.display = "none";
-          playerWin.children[1].style.display = "none";
-          playerWin.children[2].style.display = "block";
+        if(tied){
+            const tiedCounter = document.getElementById("tied-counter");
+            playerWin.style.display = "block";
+            playerWin.children[0].style.display = "none";
+            playerWin.children[1].style.display = "none";
+            playerWin.children[2].style.display = "block";
+            if(tied)
+                tiedCounter.innerHTML = `${++counter[1]}`;
+        }
     }
 }
 
@@ -141,4 +147,13 @@ function endGame(text, winImg, textColor){
     takesRound.insertAdjacentHTML("beforebegin", winImg);
     takesRound.style.color = textColor;
 }
-console.log(playerWin.children[2]);
+
+function gameResult(num){
+    const xCounter = document.getElementById("x-counter");
+    const oCounter = document.getElementById("o-counter");
+    if(turn === "o" && checkWin(num)!== undefined)
+        xCounter.innerHTML = `${++counter[0]}`;
+    else if(turn === "x" && checkWin(num)!== undefined)
+        oCounter.innerHTML = `${++counter[2]}`;
+}
+//const xCounter = document.getElementById("x-counter");
