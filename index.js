@@ -4,6 +4,7 @@ const squares = document.querySelectorAll(".square");
 const vsPlayerbtn = document.querySelector(".vs-player-btn");
 const playerWin = document.querySelector(".player-win");
 const xo = document.querySelector(".player-turn");
+const restartBtn = document.querySelector(".restart-btn");
 let value;
 let squarePosition = [0,0,0,0,0,0,0,0,0];
 let imgs = {
@@ -46,10 +47,12 @@ squares.forEach((sequare, index)=>{
     sequare.addEventListener("click",function handler(){
         playerTurn(sequare);
         squarePosition[index] = value;
-        turn === "o"? squareWinStyle(1, "x-win-class", imgs.darkX, "You Won!", imgs.blueX, "#31C3BD") 
-        : squareWinStyle(-1, "o-win-class", imgs.darkO, "OH NO, YOU LOST...!", imgs.yellowO, "#F2B137");
+        turn === "o"? squareWinStyle(1, "x-win-class", imgs.darkX, "PLAYER 2 WINS!", imgs.blueX, "#31C3BD") 
+        : squareWinStyle(-1, "o-win-class", imgs.darkO, "PLAYER 1 WINS!", imgs.yellowO, "#F2B137");
     },{once:true})
 });
+
+restartBtn.addEventListener("click", restart);
 
 
 ///////////////////////// FUNCTIONS DECLERATIONS /////////////////////////////////////////
@@ -131,9 +134,9 @@ function squareWinStyle(num, winClass, bgImg, text, winImg, textColor){
         if(tied){
             const tiedCounter = document.getElementById("tied-counter");
             playerWin.style.display = "block";
-            playerWin.children[0].style.display = "none";
-            playerWin.children[1].style.display = "none";
-            playerWin.children[2].style.display = "block";
+            playerWin.children[0].children[0].style.display = "none";
+            playerWin.children[0].children[1].style.display = "none";
+            playerWin.children[0].children[2].style.display = "block";
             if(tied)
                 tiedCounter.innerHTML = `${++counter[1]}`;
         }
@@ -143,7 +146,7 @@ function squareWinStyle(num, winClass, bgImg, text, winImg, textColor){
 function endGame(text, winImg, textColor){
     const takesRound = document.getElementById("takes-round");
     playerWin.style.display = "block";
-    playerWin.firstElementChild.innerHTML = text;
+    playerWin.children[0].children[0].innerHTML = text;
     takesRound.insertAdjacentHTML("beforebegin", winImg);
     takesRound.style.color = textColor;
 }
@@ -156,4 +159,9 @@ function gameResult(num){
     else if(turn === "x" && checkWin(num)!== undefined)
         oCounter.innerHTML = `${++counter[2]}`;
 }
-//const xCounter = document.getElementById("x-counter");
+
+function restart(){
+    playerWin.style.display = "block";
+    playerWin.children[0].style.display = "none";
+    playerWin.children[1].style.display = "block";
+}
