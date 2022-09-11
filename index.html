@@ -63,26 +63,35 @@
             <div class="game-result">
                 <div class="result-btn x-player">
                     <small>X(P2)</small>
-                    <h4>0</h4>
+                    <h4 id="x-counter">0</h4>
                 </div>
                 <div class="result-btn ties">
                     <small>TIES</small>
-                    <h4>0</h4>
+                    <h4 id="tied-counter">0</h4>
                 </div>
                 <div class="result-btn o-player">
                     <small>O(P1)</small>
-                    <h4>0</h4>
+                    <h4 id="o-counter">0</h4>
                 </div>
             </div>
             <div class="player-win">
-                <h4>You Won!</h4>
-                <div class="win-text">
-                    <h1 id="takes-round">TAKES THE ROUND</h1>
+                <div>
+                    <h4>You Won!</h4>
+                    <div class="win-text">
+                        <h1 id="takes-round">TAKES THE ROUND</h1>
+                    </div>
+                    <h3 class="tied text">ROUND TIED</h3>
+                    <div class="next-step-btns">
+                        <button class="quit">Quit</button>
+                        <button class="next-round same-btns">Next round</button>
+                    </div>
                 </div>
-                <h3 class="tied">ROUND TIED</h3>
-                <div class="next-step-btns">
-                    <button class="quit">Quit</button>
-                    <button class="next-round">Next round</button>
+                <div class="restart">
+                    <h3 class="text">RESTART GAME?</h3>
+                    <div>
+                        <button class="same-btns cancel">NO,CANCEL</button>
+                        <button class="same-btns yes-restart">YES,RESTART</button>
+                    </div>
                 </div>
             </div>
         </div>

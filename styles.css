@@ -162,7 +162,7 @@ body{
 .player-turn{
     background: var(--semi-dark-navy);
     box-shadow: inset 0px -4px 0px #10212A;
-    border-radius: 5px;
+    border-radius: 5px; 
     border:none;
     outline: none;
     font-size: 14px;
@@ -185,7 +185,7 @@ body{
     outline: none;
     width: 40px;
 }
-.restart-btn:hover{
+.restart-btn:hover, .cancel:hover{
     background-color: #DBE8ED;
     cursor: pointer;
 }
@@ -294,7 +294,7 @@ body{
     letter-spacing: 1.5px;
     color: var(--light-blue);
 }
-.tied{
+.text{
     text-align: center;
     margin-bottom: 24px;
     font-weight: 700;
@@ -302,12 +302,17 @@ body{
     letter-spacing: 1.5px;
     color: var(--silver);
     margin-top: 34px;
+}
+.tied{
     display: none;
 }
 .next-step-btns{
     display: flex;
     justify-content: center;
     gap: 16px;
+}
+.next-step-btns > button{
+    cursor: pointer;
 }
 .quit{
     background: var(--silver);
@@ -324,6 +329,8 @@ body{
 .next-round{
     background: var(--light-yellow);
     box-shadow: inset 0px -4px 0px #CC8B13;
+}
+.same-btns{
     border-radius: 10px;
     border: none;
     outline: none;
@@ -333,7 +340,25 @@ body{
     letter-spacing: 1px;
     color: var(--bg-color);
 }
-
+.same-btns:hover{
+    cursor: pointer;
+}
+.cancel{
+    background: var(--silver);
+    box-shadow: inset 0px -4px 0px #6B8997;
+}
+.yes-restart{
+    background: var(--light-yellow);
+    box-shadow: inset 0px -4px 0px #CC8B13;
+}
+.restart{
+    display: none;
+}
+.restart :last-child{
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
 @media(min-width:600px){
     .player-turn{
         padding: 13px 30px 19px 30px;
@@ -385,5 +410,9 @@ body{
     }
     .win-text img{
         width:64px;
+    }
+    .text{
+        font-size: 40px;
+        letter-spacing: 2.5px;
     }
 }
