@@ -1,4 +1,7 @@
 ////////////////////DECLARITIONS///////////////////////////////////
+import playerResult from "./playerResult.js";
+import { restart, quiteGame, updateTiedCounter,endGame } from "./gameState.js";
+//import {isTied,checkWin,checkWinner} from "./checkWinner.js";
 const pickmark = document.querySelectorAll(".pick-mark");
 const game = document.querySelector(".game");
 const newGame = document.querySelector(".new-game");
@@ -26,7 +29,7 @@ let imgs = {
     outlineX:'<img src="assets/icon-x-outline.svg">',
     outlineO:'<img src="assets/icon-o-outline.svg">'
 }
-let turn = -1;
+let turn = 2;
 let winningCombination = [
                             [0,1,2],[0,3,6],[0,4,8],
                             [3,4,5],[6,7,8],[1,4,7],
@@ -54,6 +57,8 @@ pickmark.forEach(btn => {
             playerTurn();
             switchTurn();
         }
+        pickmark[0].classList.toggle("is-first");
+        pickmark[1].classList.toggle("is-first");
     });
 });
 
@@ -64,18 +69,19 @@ vsPlayerbtn.addEventListener("click",()=>{
     newGame.style.display = sessionStorage.displayNone;
 });
 
-squares.forEach((square, index)=>{
+/*squares.forEach((square, index)=>{
     squareOnHover(square, index);
-});
+});*/
 
 squares.forEach((sequare, index)=>{
     sequare.addEventListener("click",function handler(){
+        //console.time('Execution Time');    
         playerTurn();
         squarePosition[index] = value;
-        if(turn === 1){
-            sequare.innerHTML = imgs.blueX;;
-            if(hasWinner(1)){
-                winnerButtonsStyle(1, "x-win-class", imgs.darkX);
+        if(turn === -2){
+            sequare.innerHTML = imgs.blueX;
+            if(hasWinner(-2)){
+                winnerButtonsStyle(-2, "x-win-class", imgs.darkX);
                 endGame("PLAYER 2 WINS!", imgs.blueX, "#31C3BD");
                 sessionStorage.xCounter = Number(sessionStorage.xCounter) + 1;
                 xCounter.innerHTML = sessionStorage.xCounter;
@@ -84,10 +90,11 @@ squares.forEach((sequare, index)=>{
                 tiedStyle();
                 updateTiedCounter();
             }
-        }else{
-            sequare.innerHTML = imgs.yellowO;
-            if(hasWinner(-1)){
-                winnerButtonsStyle(-1, "o-win-class", imgs.darkO);
+        }/*else{
+            ////Ai turn so call aiTurn();
+            //sequare.innerHTML = imgs.yellowO;
+            if(hasWinner(2)){
+                winnerButtonsStyle(2, "o-win-class", imgs.darkO);
                 endGame("PLAYER 1 WINS!", imgs.yellowO, "#F2B137");
                 sessionStorage.oCounter = Number(sessionStorage.oCounter) + 1;
                 oCounter.innerHTML = sessionStorage.oCounter;
@@ -97,10 +104,82 @@ squares.forEach((sequare, index)=>{
                 updateTiedCounter();
             }
         }
+        switchTurn();*/
         switchTurn();
+        playerTurn();
+        console.time('Execution Time');
+        aiTurn();
+        //console.timeEnd('Execution Time');
+        if(hasWinner(2)){
+            winnerButtonsStyle(2, "o-win-class", imgs.darkO);
+            endGame("PLAYER 1 WINS!", imgs.yellowO, "#F2B137");
+            sessionStorage.oCounter = Number(sessionStorage.oCounter) + 1;
+            oCounter.innerHTML = sessionStorage.oCounter;
+        }
+        else if(isTied()){
+            tiedStyle();
+            updateTiedCounter();
+        }
+        console.timeEnd('Execution Time');
     },{once:true})
 });
-
+function aiTurn(){
+    let finalScore = -10;
+    let bestMove;
+    squarePosition.forEach((el,index)=>{
+        if(el === 0){
+            squares[index].innerHTML = imgs.yellowO;
+            squarePosition[index] = 2;
+            let score = minmax(10,false);
+            squares[index].innerHTML = "";
+            squarePosition[index] = 0;
+            if(score > finalScore){
+                finalScore = score;
+                bestMove = index;
+            }
+        }
+    })
+    squares[bestMove].innerHTML = imgs.yellowO;
+    squarePosition[bestMove] = 2;
+    switchTurn();
+}
+function minmax(depth,isMaximizing){
+    if(checkWinner() !== 1){
+        return checkWinner();
+    }
+    if(isMaximizing){
+        let finalScore = -10;
+        squarePosition.forEach((el,index)=>{
+            if(el === 0){
+                squares[index].innerHTML = imgs.yellowO;
+                squarePosition[index] = 2;
+                let score = minmax(depth-1,false);
+                squares[index].innerHTML = "";
+                squarePosition[index] = 0;
+                if(score > finalScore){
+                    finalScore = score;
+                }
+            }
+        })
+        return finalScore;
+    }
+    else{
+        let finalScore = 10;
+        squarePosition.forEach((el,index)=>{
+            if(el === 0){
+                squares[index].innerHTML = imgs.blueX;
+                squarePosition[index] = -2;
+                let score = minmax(depth-1,true);
+                squares[index].innerHTML = "";
+                squarePosition[index] = 0;
+                if(score < finalScore){
+                    finalScore = score;
+                }
+            }
+        })
+        return finalScore;
+    }
+}
 restartBtn.addEventListener("click", restart);
 cancelBtn.addEventListener("click",()=>{
     playerWin.style.display = "none";
@@ -120,15 +199,11 @@ quitBtn.addEventListener("click",()=>{
 
 function isXFirstMark(){
     pickmark[0].innerHTML = imgs.darkX;
-    pickmark[0].classList.add("is-first");
-    pickmark[1].classList.remove("is-first");
     pickmark[1].innerHTML = imgs.silverO;
 }
 
 function isOFirstMark(){
     pickmark[1].innerHTML = imgs.darkO;
-    pickmark[1].classList.add("is-first");
-    pickmark[0].classList.remove("is-first");
     pickmark[0].innerHTML = imgs.silverX;
 }
 
@@ -140,7 +215,7 @@ function remember(mark){
 function squareOnHover(square, index){
     square.addEventListener("mouseover",()=>{
         if(squarePosition[index] === 0){
-            turn === 1? squares[index].innerHTML = imgs.outlineX : squares[index].innerHTML = imgs.outlineO;
+            turn === -2? squares[index].innerHTML = imgs.outlineX : squares[index].innerHTML = imgs.outlineO;
         }
     })
     square.addEventListener("mouseout",()=>{
@@ -151,23 +226,18 @@ function squareOnHover(square, index){
 }
 
 function playerTurn(){
-    if(turn === -1){
+    if(turn === 2){
         xo.firstElementChild.setAttribute("src","assets/icon-x-silver.svg");
-        value = -1;
+        value = 2;
     }
     else{
         xo.firstElementChild.setAttribute("src","assets/icon-o-silver.svg");
-        value = 1;
+        value = -2;
     }
 }
 
 function checkWin(num){
-    return winningCombination.find((combination)=>{
-        return combination.every((position)=>{
-            return squarePosition[position] === num;
-         });
-         
-    });
+    return winningCombination.find( combination => combination.every(position=>squarePosition[position] === num));
 }
 
 function hasWinner(num){
@@ -182,14 +252,7 @@ function winnerButtonsStyle(num, winClass, bgImg){
 }
 
 function isTied(){
-    let tied = true;
-    for(let i = 0; i<9; i++){
-        if(squarePosition[i] === 0){
-            tied = false;
-            break;
-        }
-    }
-    return tied;
+    return !squarePosition.some(i => i === 0);
 }
 
 function tiedStyle(){
@@ -202,40 +265,10 @@ function tiedStyle(){
 function switchTurn(){
     turn *= -1;
 }
-
-function endGame(text, winImg, textColor){
-    const takesRound = document.getElementById("takes-round");
-    playerWin.style.display = "block";
-    playerWin.children[0].children[0].innerHTML = text;
-    takesRound.insertAdjacentHTML("beforebegin", winImg);
-    takesRound.style.color = textColor;
-}
-
-function restart(){
-    playerWin.style.display = "block";
-    playerWin.children[0].style.display = "none";
-    playerWin.children[1].style.display = "block";
-}
-
-function playerResult(){
-    if(!(sessionStorage.xCounter && sessionStorage.tiedCounter && sessionStorage.oCounter)){
-        sessionStorage.setItem("xCounter", 0);
-        sessionStorage.setItem("tiedCounter", 0);
-        sessionStorage.setItem("oCounter", 0);
-    }
-    xCounter.innerHTML = sessionStorage.xCounter;
-    tiedCounter.innerHTML = sessionStorage.tiedCounter;
-    oCounter.innerHTML = sessionStorage.oCounter;
-}
-
-function updateTiedCounter(){
-    sessionStorage.tiedCounter = Number(sessionStorage.tiedCounter) + 1;
-    tiedCounter.innerHTML = sessionStorage.tiedCounter;
-}
-
-function quiteGame(){
-    sessionStorage.clear();
-    location.reload();
+function checkWinner(){
+    let isTherWiner = winningCombination.find(arr => arr.every((el,i,array) => squares[el].innerHTML !=="" && squares[el].innerHTML === squares[array[0]].innerHTML));
+    if(isTherWiner === undefined) return isTied() ? 0 : 1 ; 
+    return squarePosition[isTherWiner[0]] === 2 ?  2 : -2;
 }
 
 
