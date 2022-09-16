@@ -267,7 +267,7 @@ body{
 /*************************player win *********************************/
 
 .player-win{
-    width: 375px;
+    width: 100%;
     background: var(--semi-dark-navy);
     position: absolute;
     top: 220px;
