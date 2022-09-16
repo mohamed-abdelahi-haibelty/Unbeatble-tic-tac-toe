@@ -52,7 +52,7 @@ xo.firstElementChild.setAttribute("src","assets/icon-o-silver.svg");
 vsCpuBtn.addEventListener("click",()=>{
     sessionStorage.setItem("cpu", true);
     displayUi();
-    if(turn === 2 && sessionStorage.cpu) setTimeout(aiTurn, 500);
+    if(turn === 2 && sessionStorage.cpu) setTimeout(aiTurn, 100);
 })
 
 if(sessionStorage.displayBlock && sessionStorage.displayNone){
@@ -82,7 +82,7 @@ pickmark.forEach(btn => {
         }
     });
 });
-if(turn === 2 && sessionStorage.cpu) setTimeout(aiTurn, 300);
+if(turn === 2 && sessionStorage.cpu) setTimeout(aiTurn, 150);
 function whoseNextTurnLabel(){
     turn === 2 ? xo.firstElementChild.setAttribute("src","assets/icon-x-silver.svg"):
     xo.firstElementChild.setAttribute("src","assets/icon-o-silver.svg");
@@ -127,7 +127,7 @@ squares.forEach((sequare, index)=>{
             console.time('Execution Time');
             if(sessionStorage.cpu && !isTied()){
                 switchTurn();
-                setTimeout(aiTurn, 500);
+                setTimeout(aiTurn, 200);
             }
             console.timeEnd('Execution Time');
             console.log(squarePosition);
