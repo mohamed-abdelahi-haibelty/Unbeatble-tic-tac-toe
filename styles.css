@@ -260,6 +260,10 @@ body{
     background-color: var(--light-yellow);
 }
 
+.outlineImg{
+    pointer-events: none;
+}
+
 /*************************player win *********************************/
 
 .player-win{
