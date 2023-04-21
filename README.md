@@ -8,7 +8,7 @@ making it unbeatable. The user can also choose which player goes first, X or O
 
 
 ## Demo
-You can try out the game live by visiting this link: https://unbeatable-tic-tac-toe.netlify.app/
+You can try out the game live by visiting this link: https://unbeatble-tic-tac-toe.netlify.app/
 
 
 ## How to play
