@@ -47,7 +47,7 @@ Don't forget to give the project a star! Thanks again!
 ## Acknowledgements
 
 
-This project was completed as part of an intermediate challenge from [Frontend Mentor](https://www.frontendmentor.io/challenges/tic-tac-toe-game-Re7ZF_E2v.
+This project was completed as part of an intermediate challenge from [Frontend Mentor](https://www.frontendmentor.io/challenges/tic-tac-toe-game-Re7ZF_E2v).
 
 
 ## License
